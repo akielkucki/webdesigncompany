@@ -197,6 +197,7 @@ export default function MatrixGrid() {
           {Array.from({ length: 132 }).map((_, i) => (
               <motion.div
                   key={i}
+                  // @ts-ignore
                   variants={itemVariants(i)}
                   className="w-full aspect-square bg-black/30 will-change-[opacity]"
               />
