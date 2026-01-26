@@ -186,6 +186,7 @@ export default function MatrixGrid() {
           // Fires once when mouse enters the area.
           // Incrementing key forces React to destroy and recreate the grid.
           onMouseEnter={() => setResetKey(prev => prev + 1)}
+          onTouchStart={() => setResetKey(prev => prev + 1)}
       >
         <motion.div
             key={resetKey}
