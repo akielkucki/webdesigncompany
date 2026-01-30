@@ -1,133 +1,128 @@
 "use client";
 
-import { useRef, useState } from "react";
-import {AnimatePresence, motion, useScroll, useTransform} from "motion/react";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import Link from "next/link";
 import { Container, SectionNumber } from "../ui";
-
-const projects = [
-  {
-    title: "Nexus Finance",
-    category: "Web Design & Development",
-    description: "A fintech platform redesign that increased user engagement by 180%.",
-    year: "2024",
-  },
-  {
-    title: "Meridian Studio",
-    category: "Branding & Web",
-    description: "Complete brand identity and website for a creative agency.",
-    year: "2024",
-  },
-  {
-    title: "Apex Athletics",
-    category: "E-commerce",
-    description: "High-performance e-commerce platform driving $2M+ monthly revenue.",
-    year: "2023",
-  },
-  {
-    title: "Pulse Health",
-    category: "Web Application",
-    description: "Healthcare dashboard serving 50,000+ daily active users.",
-    year: "2023",
-  },
-];
+import { projects, type Project } from "@/data/projects";
 
 export function Work() {
   const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [scrollDistance, setScrollDistance] = useState(0);
+
+  // Calculate the actual scroll distance needed
+  useEffect(() => {
+    const calculateScrollDistance = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        // How far we need to scroll to show the last item
+        const distance = containerWidth - viewportWidth + 40; // 40px buffer
+        setScrollDistance(Math.max(0, distance));
+      }
+    };
+
+    calculateScrollDistance();
+    window.addEventListener("resize", calculateScrollDistance);
+    return () => window.removeEventListener("resize", calculateScrollDistance);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
 
-  // Transform vertical scroll to horizontal movement
-  // Adjust the multiplier based on number of cards and their width
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  // Transform vertical scroll to horizontal movement using calculated distance
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
 
   // Optional: Fade/scale the header as you scroll through
   const headerOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0.3]);
   const headerY = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
 
   return (
-      <section
-          ref={sectionRef}
-          id="work"
-          className="relative h-[300vh] border-t border-border bg-neutral-950"
-      >
-        {/* Sticky container that stays in view */}
-        <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
-          <Container className="mb-8 md:mb-12">
-            <motion.div
-                style={{ opacity: headerOpacity, y: headerY }}
-                className="lg:max-w-md"
-            >
-              <SectionNumber number="02" />
-              <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="text-3xl md:text-4xl font-semibold tracking-tight mt-4"
-              >
-                Selected Work
-              </motion.h2>
-              <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="mt-4 text-muted-light font-light leading-relaxed"
-              >
-                A curated selection of projects we&apos;re proud to have delivered.
-              </motion.p>
-            </motion.div>
-          </Container>
-
-          {/* Horizontal scrolling container */}
+    <section
+      ref={sectionRef}
+      id="work"
+      className="relative h-[600vh] border-t border-border bg-neutral-950"
+    >
+      {/* Sticky container that stays in view */}
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
+        <Container className="mb-8 md:mb-12">
           <motion.div
-              ref={containerRef}
-              style={{ x }}
-              className="flex gap-6 md:gap-10 pl-6 md:pl-16 lg:pl-24"
+            style={{ opacity: headerOpacity, y: headerY }}
+            className="lg:max-w-md"
           >
-            {projects.map((project, index) => (
-                <ProjectCard key={project.title} project={project} index={index} />
-            ))}
-
-            {/* End card - CTA */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="flex-shrink-0 w-[300px] md:w-[400px] flex items-center justify-center"
+            <SectionNumber number="02" />
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-3xl md:text-4xl font-semibold tracking-tight mt-4"
             >
-              <div className="text-center">
-                <p className="text-muted-light mb-4">Want to see more?</p>
-                <a
-                  href="#contact"
-                  className="text-xl md:text-2xl font-medium text-accent hover:text-white transition-colors"
-                >
-                  Let&apos;s talk →
-                </a>
-              </div>
-            </motion.div>
+              Selected Work
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-4 text-muted-light font-light leading-relaxed"
+            >
+              A curated selection of projects we&apos;re proud to have delivered.
+            </motion.p>
+          </motion.div>
+        </Container>
+
+        {/* Horizontal scrolling container */}
+        <motion.div
+          ref={containerRef}
+          style={{ x }}
+          className="flex gap-6 md:gap-8 lg:gap-10 px-6 md:px-12 lg:px-20 "
+        >
+          {projects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
+          ))}
+
+          {/* End card - CTA */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex-shrink-0 w-[80vw] sm:w-[60vw] md:w-[400px] lg:w-[500px] flex items-center justify-center"
+          >
+            <div className="text-center">
+              <p className="text-muted-light mb-4">Want to see more?</p>
+              <a
+                href="#contact"
+                className="text-xl md:text-2xl font-medium text-accent hover:text-white transition-colors"
+              >
+                Let&apos;s talk →
+              </a>
+            </div>
           </motion.div>
 
-          {/* Scroll progress indicator */}
-          <div className="absolute bottom-8 left-6 md:left-16 lg:left-24 right-6 md:right-16 lg:right-24">
-            <div className="h-px bg-border">
-              <motion.div
-                style={{ scaleX: scrollYProgress }}
-                className="h-full bg-accent origin-left"
-              />
-            </div>
-            <div className="flex justify-between mt-3 text-xs text-muted font-mono">
-              <span>01</span>
-              <span>04</span>
-            </div>
+          {/* End spacer to ensure last card is fully visible */}
+          <div className="flex-shrink-0 w-[20vw] md:w-[100px]" />
+        </motion.div>
+
+        {/* Scroll progress indicator */}
+        <div className="relative -bottom-10 left-6 md:left-12 lg:left-20 right-6 md:right-12 lg:right-20 w-[90vw]">
+          <div className="h-px bg-border">
+            <motion.div
+              style={{ scaleX: scrollYProgress }}
+              className="h-full bg-accent origin-left "
+            />
+          </div>
+          <div className="flex justify-between mt-3 text-xs text-muted font-mono">
+            <span>01</span>
+            <span>0{projects.length}</span>
           </div>
         </div>
-      </section>
-);
+      </div>
+    </section>
+  );
 }
 
 // Grid configuration
@@ -216,7 +211,7 @@ function ProjectCard({
                        project,
                        index,
                      }: {
-  project: (typeof projects)[number];
+  project: Project;
   index: number;
 }) {
   const cardRef = useRef<HTMLElement>(null);
@@ -238,51 +233,56 @@ function ProjectCard({
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
           style={{ rotate: cardRotate }}
-          className="group relative flex-shrink-0 w-[85vw] md:w-[600px] lg:w-[700px]"
+          className="group relative flex-shrink-0 w-[80vw] sm:w-[70vw] md:w-[550px] lg:w-[600px]"
       >
-        <div className="aspect-[16/10] bg-neutral-900 border border-border overflow-hidden rounded-lg">
-          <motion.div
-              style={{ y: imageY }}
-              className="w-full h-[120%] bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center"
-          >
-            <motion.span
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 0.2 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="text-7xl md:text-9xl font-extralight text-muted"
+        <Link href={`/projects/${project.slug}`} className="block">
+          <div className="aspect-[16/10] bg-neutral-900 border border-border overflow-hidden rounded-lg">
+            <motion.div
+                style={{ y: imageY }}
+                className="w-full h-[120%] bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center"
             >
-              {String(index + 1).padStart(2, "0")}
-            </motion.span>
-          </motion.div>
+              <motion.span
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 0.2 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="text-7xl md:text-9xl font-extralight text-muted"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </motion.span>
+            </motion.div>
 
-          {/* Hover overlay */}
-          <motion.div
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-
-              className="absolute inset-0 bg-accent/10 rounded-lg backdrop-blur-sm aspect-video flex justify-start items-start"
-          >
-
-            <MatrixGrid/>
-          </motion.div>
-        </div>
-
-        <div className="mt-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-          <span className="text-xs text-accent font-medium tracking-wider uppercase">
-            {project.category}
-          </span>
-            <h3 className="mt-2 text-2xl md:text-3xl font-medium group-hover:text-accent transition-colors duration-300">
-              {project.title}
-            </h3>
-            <p className="mt-2 text-muted-light font-light max-w-md">
-              {project.description}
-            </p>
+            {/* Hover overlay */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-accent/10 rounded-lg backdrop-blur-sm aspect-video flex justify-start items-start"
+            >
+              <MatrixGrid/>
+            </motion.div>
           </div>
-          <span className="text-sm text-muted font-mono shrink-0">{project.year}</span>
-        </div>
+
+          <div className="mt-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span className="text-xs text-accent font-medium tracking-wider uppercase">
+                {project.category}
+              </span>
+              <h3 className="mt-2 text-2xl md:text-3xl font-medium group-hover:text-accent transition-colors duration-300">
+                {project.title}
+              </h3>
+              <p className="mt-2 text-muted-light font-light max-w-md">
+                {project.description}
+              </p>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-sm text-accent font-medium uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                View Project
+              </span>
+              <span className="text-sm text-muted font-mono shrink-0">{project.year}</span>
+            </div>
+          </div>
+        </Link>
       </motion.article>
   );
 }
