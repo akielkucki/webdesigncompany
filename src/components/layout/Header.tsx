@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { useState } from "react";
-import { Container } from "../ui";
+import { Hexagon } from "lucide-react";
 
 const navLinks = [
   { href: "#services", label: "Services" },
@@ -19,21 +19,25 @@ export function Header() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 pt-4"
     >
-      <Container>
-        <nav className="flex items-center justify-between h-20">
-          <a href="#" className="text-xl font-semibold tracking-tight">
-            STUDIO<span className="text-accent">.</span>
+      <nav className="max-w-6xl mx-auto bg-white/80 backdrop-blur-md rounded-full border border-border/50 shadow-lg shadow-black/5 px-4 md:px-6">
+        <div className="flex items-center justify-between h-14 md:h-16">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
+              <Hexagon className="w-4 h-4 text-white fill-white" />
+            </div>
+            <span className="text-lg font-semibold text-foreground">Studio</span>
           </a>
 
-          {/* Desktop Nav */}
-          <ul className="hidden md:flex items-center gap-10">
+          {/* Desktop Nav - Centered */}
+          <ul className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm font-light text-muted-light hover:text-foreground transition-colors duration-300"
+                  className="text-sm font-medium text-muted-light hover:text-foreground transition-colors duration-300"
                 >
                   {link.label}
                 </a>
@@ -41,12 +45,21 @@ export function Header() {
             ))}
           </ul>
 
-          <a
-            href="#contact"
-            className="hidden md:inline-flex text-sm font-medium text-accent hover:text-accent-hover transition-colors duration-300"
-          >
-            Let's Talk
-          </a>
+          {/* Right side - Login & CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="#contact"
+              className="text-sm font-medium text-muted-light hover:text-foreground transition-colors duration-300"
+            >
+              Login
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex px-5 py-2.5 text-sm font-medium bg-accent text-white rounded-full hover:bg-accent-hover transition-colors duration-300"
+            >
+              Get Started
+            </a>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -68,7 +81,7 @@ export function Header() {
               className="w-6 h-px bg-foreground"
             />
           </button>
-        </nav>
+        </div>
 
         {/* Mobile Menu */}
         <motion.div
@@ -76,30 +89,37 @@ export function Header() {
           animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
           className="md:hidden overflow-hidden"
         >
-          <ul className="flex flex-col gap-4 pb-6">
+          <ul className="flex flex-col gap-4 py-6 border-t border-border/50">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-light text-muted-light hover:text-foreground transition-colors"
+                  className="text-base font-medium text-muted-light hover:text-foreground transition-colors"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
-            <li>
+            <li className="flex items-center gap-4 pt-4 border-t border-border/50">
               <a
                 href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-accent"
+                className="text-base font-medium text-muted-light"
               >
-                Let's Talk
+                Login
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="inline-flex px-5 py-2.5 text-sm font-medium bg-accent text-white rounded-full"
+              >
+                Get Started
               </a>
             </li>
           </ul>
         </motion.div>
-      </Container>
+      </nav>
     </motion.header>
   );
 }

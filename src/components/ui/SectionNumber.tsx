@@ -28,7 +28,7 @@ export function SectionNumber({ number }: { number: string }) {
         {/* Overlay layer - filled color, clipped by scroll */}
         <motion.span
             style={{ clipPath }}
-            className="absolute inset-0 text-[120px] md:text-[180px] font-extralight leading-none text-primary select-none"
+            className="absolute inset-0 text-[120px] md:text-[180px] font-extralight leading-none text-accent select-none"
         >
         {number}
       </motion.span>

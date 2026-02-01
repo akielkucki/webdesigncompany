@@ -20,12 +20,12 @@ export function Button({
     className,
 }: ButtonProps) {
   const baseStyles =
-    `inline-flex items-center justify-center px-19 py-4 text-sm font-medium tracking-wide uppercase transition-all duration-300 cursor-pointer`;
+    `inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer rounded-full`;
 
   const variants = {
-    primary: "bg-accent text-background hover:bg-accent-hover",
+    primary: "bg-accent text-white hover:bg-accent-hover shadow-lg shadow-accent/25",
     outline:
-      "border border-foreground/20 text-foreground hover:border-accent hover:text-accent",
+      "border border-border bg-white text-foreground hover:border-accent hover:text-accent",
   };
 
   const Component = href ? motion.a : motion.button;

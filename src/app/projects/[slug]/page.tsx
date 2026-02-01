@@ -25,7 +25,7 @@ export default function ProjectPage() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/10"
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border"
       >
         <Container>
           <nav className="flex items-center justify-between h-20">
@@ -84,7 +84,7 @@ export default function ProjectPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-20 md:mt-32 pt-10 border-t border-white/10"
+              className="mt-20 md:mt-32 pt-10 border-t border-border"
             >
               <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16 text-center">
                 <div>
@@ -113,7 +113,7 @@ export default function ProjectPage() {
             <motion.div
               animate={{ y: [0, 6, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-px h-10 bg-gradient-to-b from-white/30 to-transparent"
+              className="w-px h-10 bg-gradient-to-b from-accent/50 to-transparent"
             />
           </motion.div>
         </section>
@@ -125,16 +125,16 @@ export default function ProjectPage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="aspect-[16/9] bg-neutral-900 flex items-center justify-center"
+            className="aspect-[16/9] bg-gradient-to-br from-blue-50 to-sky-100 flex items-center justify-center"
           >
-            <span className="text-[150px] md:text-[250px] lg:text-[350px] font-extralight text-white/5 select-none">
+            <span className="text-[150px] md:text-[250px] lg:text-[350px] font-extralight text-accent/10 select-none">
               {project.title.charAt(0)}
             </span>
           </motion.div>
         </section>
 
         {/* Challenge & Solution */}
-        <section className="py-24 md:py-32 border-t border-white/10">
+        <section className="py-24 md:py-32 border-t border-border">
           <Container>
             <div className="grid md:grid-cols-2 gap-16 md:gap-24">
               <motion.div
@@ -168,7 +168,7 @@ export default function ProjectPage() {
         </section>
 
         {/* Results */}
-        <section className="py-24 md:py-32 border-t border-white/10">
+        <section className="py-24 md:py-32 border-t border-border">
           <Container>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -193,7 +193,7 @@ export default function ProjectPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 border border-white/10 rounded-lg text-center"
+                  className="p-6 border border-border rounded-lg text-center"
                 >
                   <p className="text-lg font-medium leading-relaxed">{result}</p>
                 </motion.div>
@@ -204,7 +204,7 @@ export default function ProjectPage() {
 
         {/* Testimonial */}
         {project.testimonial && (
-          <section className="py-24 md:py-32 border-t border-white/10">
+          <section className="py-24 md:py-32 border-t border-border">
             <Container>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -234,7 +234,7 @@ export default function ProjectPage() {
 
         {/* Next Project */}
         {nextProject && (
-          <section className="py-24 md:py-32 border-t border-white/10">
+          <section className="py-24 md:py-32 border-t border-border">
             <Container>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -262,7 +262,7 @@ export default function ProjectPage() {
       </main>
 
       {/* Footer */}
-      <footer className="py-10 border-t border-white/10">
+      <footer className="py-10 border-t border-border">
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <Link href="/" className="text-xl font-semibold tracking-tight">

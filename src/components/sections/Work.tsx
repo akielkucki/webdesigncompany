@@ -44,7 +44,7 @@ export function Work() {
     <section
       ref={sectionRef}
       id="work"
-      className="relative h-[600vh] border-t border-border bg-neutral-950"
+      className="relative h-[600vh] border-t border-border bg-background-secondary"
     >
       {/* Sticky container that stays in view */}
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
@@ -96,7 +96,7 @@ export function Work() {
               <p className="text-muted-light mb-4">Want to see more?</p>
               <a
                 href="#contact"
-                className="text-xl md:text-2xl font-medium text-accent hover:text-white transition-colors"
+                className="text-xl md:text-2xl font-medium text-accent hover:text-accent-hover transition-colors"
               >
                 Let&apos;s talk →
               </a>
@@ -195,7 +195,7 @@ export default function MatrixGrid() {
                   key={i}
                   // @ts-ignore
                   variants={itemVariants(i)}
-                  className="w-full aspect-square bg-black/30 will-change-[opacity]"
+                  className="w-full aspect-square bg-accent/20 will-change-[opacity]"
               />
           ))}
         </motion.div>
@@ -236,17 +236,17 @@ function ProjectCard({
           className="group relative flex-shrink-0 w-[80vw] sm:w-[70vw] md:w-[550px] lg:w-[600px]"
       >
         <Link href={`/projects/${project.slug}`} className="block">
-          <div className="aspect-[16/10] bg-neutral-900 border border-border overflow-hidden rounded-lg">
+          <div className="aspect-[16/10] bg-white border border-border overflow-hidden rounded-2xl shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 transition-shadow duration-300">
             <motion.div
                 style={{ y: imageY }}
-                className="w-full h-[120%] bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center"
+                className="w-full h-[120%] bg-gradient-to-br from-blue-50 to-sky-100 flex items-center justify-center"
             >
               <motion.span
                   initial={{ scale: 0.8, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 0.2 }}
+                  whileInView={{ scale: 1, opacity: 0.15 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="text-7xl md:text-9xl font-extralight text-muted"
+                  className="text-7xl md:text-9xl font-extralight text-accent"
               >
                 {String(index + 1).padStart(2, "0")}
               </motion.span>
@@ -257,7 +257,7 @@ function ProjectCard({
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-accent/10 rounded-lg backdrop-blur-sm aspect-video flex justify-start items-start"
+                className="absolute inset-0 bg-accent/10 rounded-2xl backdrop-blur-sm aspect-video flex justify-start items-start"
             >
               <MatrixGrid/>
             </motion.div>
@@ -268,10 +268,10 @@ function ProjectCard({
               <span className="text-xs text-accent font-medium tracking-wider uppercase">
                 {project.category}
               </span>
-              <h3 className="mt-2 text-2xl md:text-3xl font-medium group-hover:text-accent transition-colors duration-300">
+              <h3 className="mt-2 text-2xl md:text-3xl font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
                 {project.title}
               </h3>
-              <p className="mt-2 text-muted-light font-light max-w-md">
+              <p className="mt-2 text-muted-light max-w-md">
                 {project.description}
               </p>
             </div>

@@ -5,7 +5,7 @@ import { Button, Container, SectionNumber } from "../ui";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-32 border-t border-border bg-neutral-950">
+    <section id="contact" className="py-32 border-t border-border bg-gradient-to-b from-white to-blue-50/50">
       <Container>
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
           <div className="lg:w-1/3">
