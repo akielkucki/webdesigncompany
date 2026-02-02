@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import {EB_Garamond, Fira_Sans, Inter, Neuton, Playfair_Display, Sora, Spectral} from "next/font/google";
 import "./globals.css";
+import React from "react";
 
-const inter = Inter({
+const inter = Sora({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700"],
+  weight: ["200", "300", "400"],
+  style: "normal"
 });
 
 export const metadata: Metadata = {

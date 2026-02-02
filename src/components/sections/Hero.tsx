@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { Container, Marquee } from "@/components/ui";
 import { Sparkles, Zap } from "lucide-react";
-
+import Image from "next/image";
 // Timing constants for synchronized animation
 const timing = {
   badge: 0.1,
@@ -28,29 +28,36 @@ const trustedBrands = [
 
 // Project showcase images for marquee
 const showcaseImages = [
-  { id: 1, title: "SaaS Dashboard", gradient: "from-slate-900 to-slate-800" },
-  { id: 2, title: "E-commerce Store", gradient: "from-blue-600 to-indigo-700" },
-  { id: 3, title: "Mobile Banking", gradient: "from-emerald-500 to-teal-600" },
-  { id: 4, title: "Analytics Platform", gradient: "from-violet-600 to-purple-700" },
-  { id: 5, title: "Social App", gradient: "from-pink-500 to-rose-600" },
-  { id: 6, title: "AI Assistant", gradient: "from-cyan-500 to-blue-600" },
+  { id: 1, title: "SaaS Dashboard", gradient: "from-slate-900 to-slate-800", imageUrl: "/portfolio/blumskincare.png" },
+  { id: 2, title: "E-commerce Store", gradient: "from-blue-600 to-indigo-700", imageUrl: "/portfolio/blumskincare_mobile.png"  },
+  { id: 3, title: "Mobile Banking", gradient: "from-emerald-500 to-teal-600", imageUrl: "/portfolio/royalvendingcart.png"  },
+  { id: 4, title: "Analytics Platform", gradient: "from-violet-600 to-purple-700", imageUrl: "/portfolio/royalvendingcart_mobile.png"  },
+  // { id: 5, title: "Social App", gradient: "from-pink-500 to-rose-600" },
+  // { id: 6, title: "AI Assistant", gradient: "from-cyan-500 to-blue-600" },
 ];
 
-function ShowcaseCard({ title, gradient }: { title: string; gradient: string }) {
+function ShowcaseCard({ title, gradient, imgUrl }: { title: string; gradient: string; imgUrl: string }) {
+  const isMobile = imgUrl.includes("_mobile");
+
   return (
-    <div className={`w-[280px] md:w-[320px] lg:w-[380px] aspect-[4/3] rounded-2xl bg-gradient-to-br ${gradient} shadow-2xl shadow-black/20 border border-white/10 overflow-hidden flex-shrink-0`}>
-      <div className="w-full h-full p-6 flex flex-col justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-white/20" />
-          <div className="w-3 h-3 rounded-full bg-white/20" />
-          <div className="w-3 h-3 rounded-full bg-white/20" />
-        </div>
-        <div>
-          <div className="h-2 w-24 bg-white/20 rounded mb-2" />
-          <div className="h-2 w-32 bg-white/10 rounded" />
+      <div
+          className={`
+        ${isMobile
+              ? 'w-[180px] md:w-[200px] lg:w-[240px] aspect-[8/16]'
+              : 'w-[280px] md:w-[320px] lg:w-[850px] '
+          } 
+        rounded-2xl bg-gradient-to-br ${gradient} shadow-2xl shadow-black/20 border border-white/10 overflow-hidden inset-0
+      `}
+      >
+        <div className="w-full h-full relative">
+          <Image
+              src={imgUrl}
+              alt={`${title} image`}
+              fill
+              className="object-cover"
+          />
         </div>
       </div>
-    </div>
   );
 }
 
@@ -166,7 +173,7 @@ export function Hero() {
         <div className="mb-4">
           <Marquee speed="slow" pauseOnHover className="[--gap:1rem]">
             {showcaseImages.map((image) => (
-              <ShowcaseCard key={image.id} title={image.title} gradient={image.gradient} />
+              <ShowcaseCard key={image.id} title={image.title} gradient={image.gradient} imgUrl={image.imageUrl} />
             ))}
           </Marquee>
         </div>
