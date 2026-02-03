@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import "dotenv"
 
-const DISCORD_WEBHOOK_URL =
-  "https://discord.com/api/webhooks/1465522044878717030/NxHzsK7HNeDWlzDpwGzMagLSHnJW63xTxOBISxE3jDf_ZTFMsDfKbFOVNcFuseRmgdIe";
+const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL as string;
 
 export async function POST(request: NextRequest) {
   try {
@@ -64,7 +64,6 @@ export async function POST(request: NextRequest) {
     });
     console.log(response.status, response.statusText, await response.text())
     if (!response.ok || response.status !== 204) {
-
       throw new Error("Failed to send to Discord");
     }
 
