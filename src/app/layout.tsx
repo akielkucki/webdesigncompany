@@ -11,7 +11,7 @@ const inter = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Studio | Web Design & Development Agency",
+  title: "Northon Studios | Web Design & Development Agency",
   description:
     "We craft digital experiences that convert. Strategic design meets technical excellence for ambitious brands.",
   keywords: [

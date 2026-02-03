@@ -30,7 +30,7 @@ export default function ProjectPage() {
         <Container>
           <nav className="flex items-center justify-between h-20">
             <Link href="/" className="text-xl font-semibold tracking-tight">
-              STUDIO<span className="text-accent">.</span>
+              NORTHON STUDIOS<span className="text-accent">.</span>
             </Link>
             <Link
               href="/#work"
@@ -266,10 +266,10 @@ export default function ProjectPage() {
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <Link href="/" className="text-xl font-semibold tracking-tight">
-              STUDIO<span className="text-accent">.</span>
+              NORTHON STUDIOS<span className="text-accent">.</span>
             </Link>
             <p className="text-sm text-muted">
-              &copy; {new Date().getFullYear()} Studio. All rights reserved.
+              &copy; {new Date().getFullYear()} Northon Studios. All rights reserved.
             </p>
           </div>
         </Container>

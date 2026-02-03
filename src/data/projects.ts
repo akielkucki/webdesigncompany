@@ -116,7 +116,7 @@ export const projects: Project[] = [
     ],
     testimonial: {
       quote:
-        "Studio transformed our digital presence. The new platform has exceeded all our expectations and our users love it.",
+        "Northon Studios transformed our digital presence. The new platform has exceeded all our expectations and our users love it.",
       author: "Sarah Chen",
       role: "CEO, Nexus Financial Services",
     },
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     ],
     testimonial: {
       quote:
-        "Working with Studio was a game-changer. They understood our vision and created a brand that truly represents who we are.",
+        "Working with Northon Studios was a game-changer. They understood our vision and created a brand that truly represents who we are.",
       author: "Marcus Webb",
       role: "Founder, Meridian Studio",
     },

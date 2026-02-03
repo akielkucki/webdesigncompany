@@ -23,7 +23,7 @@ export function Footer() {
         >
           <div>
             <a href="#" className="text-2xl font-semibold tracking-tight">
-              STUDIO<span className="text-accent">.</span>
+              NORTHON STUDIOS<span className="text-accent">.</span>
             </a>
             <p className="mt-4 text-sm text-muted-light max-w-xs font-light">
               Crafting digital experiences that elevate brands and drive results.
@@ -77,7 +77,7 @@ export function Footer() {
           className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-xs text-muted font-light">
-            &copy; {new Date().getFullYear()} Studio. All rights reserved.
+            &copy; {new Date().getFullYear()} Northon Studios. All rights reserved.
           </p>
           <p className="text-xs text-muted font-light">
             Designed & Built with precision.

@@ -10,6 +10,7 @@ interface ButtonProps {
   href?: string;
   onClick?: () => void;
   className?: string;
+  disabled?: boolean;
 }
 
 export function Button({
@@ -17,7 +18,8 @@ export function Button({
   variant = "primary",
   href,
   onClick,
-    className,
+  className,
+  disabled,
 }: ButtonProps) {
   const baseStyles =
     `inline-flex items-center justify-center px-8 py-4 text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer rounded-full`;
@@ -34,8 +36,9 @@ export function Button({
     <Component
       href={href}
       onClick={onClick}
-      whileTap={{ scale: 0.98 }}
-      className={twMerge(baseStyles,variants[variant],className)}
+      disabled={disabled}
+      whileTap={disabled ? {} : { scale: 0.98 }}
+      className={twMerge(baseStyles, variants[variant], className, disabled && "opacity-50 cursor-not-allowed")}
     >
       {children}
     </Component>

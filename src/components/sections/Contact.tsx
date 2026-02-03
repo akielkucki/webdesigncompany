@@ -1,9 +1,49 @@
 "use client";
 
 import { motion } from "motion/react";
+import React, { useState } from "react";
 import { Button, Container, SectionNumber } from "../ui";
 
 export function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      company: formData.get("company"),
+      budget: formData.get("budget"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        setSubmitStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch {
+      console.log("Possible network error")
+
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <section id="contact" className="py-32 border-t border-border bg-gradient-to-b from-white to-blue-50/50">
       <Container>
@@ -41,10 +81,10 @@ export function Contact() {
                   Email
                 </span>
                 <a
-                  href="mailto:hello@studio.com"
+                  href="mailto:hello@northonstudios.com"
                   className="mt-2 block text-lg text-foreground hover:text-accent transition-colors"
                 >
-                  hello@studio.com
+                  hello@northonstudios.com
                 </a>
               </div>
               <div>
@@ -76,7 +116,7 @@ export function Contact() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="space-y-8"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
             >
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
@@ -174,7 +214,19 @@ export function Contact() {
               </div>
 
               <div className="pt-4">
-                <Button className={"w-full"}>Send Message</Button>
+                <Button className={"w-full"} disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+                {submitStatus === "success" && (
+                  <p className="mt-4 text-green-600 text-sm text-center">
+                    Message sent successfully! We&apos;ll be in touch soon.
+                  </p>
+                )}
+                {submitStatus === "error" && (
+                  <p className="mt-4 text-red-600 text-sm text-center">
+                    Something went wrong. Please try again.
+                  </p>
+                )}
               </div>
             </motion.form>
           </div>
