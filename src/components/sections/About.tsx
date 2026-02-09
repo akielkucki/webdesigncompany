@@ -102,7 +102,7 @@ export function About() {
                 ].map((tech) => (
                   <span
                     key={tech}
-                    className="px-4 py-2 text-sm font-medium rounded-full bg-accent-light/50 border border-accent/20 text-accent hover:bg-accent hover:text-white transition-colors duration-300"
+                    className="px-4 py-2 text-sm font-medium rounded-full bg-accent/[0.08] border border-accent/15 text-accent hover:bg-accent hover:text-white transition-colors duration-300"
                   >
                     {tech}
                   </span>

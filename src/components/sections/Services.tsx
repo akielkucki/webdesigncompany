@@ -1,104 +1,155 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Container, SectionNumber } from "../ui";
+import { Container } from "../ui";
+import { Clock, Smartphone, EyeOff, ChevronDown } from "lucide-react";
 
-const services = [
+const painPoints = [
   {
-    title: "Web Design",
+    icon: Clock,
+    title: "Slow, Outdated Site",
     description:
-      "Strategic, conversion-focused designs that capture your brand essence and engage your audience.",
+      "Your site was built years ago. It loads slow, looks dated, and doesn't reflect the quality of your work.",
   },
   {
-    title: "Development",
+    icon: Smartphone,
+    title: "Not Mobile-Friendly",
     description:
-      "Clean, performant code using modern technologies. Fast, secure, and built to scale.",
+      "Over 70% of homeowners search on their phone. If your site isn't built for mobile, you're losing jobs daily.",
   },
   {
-    title: "Branding",
+    icon: EyeOff,
+    title: "Invisible on Google",
     description:
-      "Complete brand identity systems from logo design to comprehensive style guidelines.",
-  },
-  {
-    title: "Digital Marketing",
-    description:
-      "Data-driven strategies that increase visibility, drive traffic, and generate qualified leads.",
+      "No SEO. No Google Business optimization. Potential clients in your area can't find you when they search.",
   },
 ];
+
+function Arrow() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.4 }}
+      className="hidden md:flex items-center justify-center text-accent"
+    >
+      <svg
+        width="48"
+        height="24"
+        viewBox="0 0 48 24"
+        fill="none"
+        className="text-accent"
+      >
+        <path
+          d="M2 12h38m0 0l-8-8m8 8l-8 8"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </motion.div>
+  );
+}
 
 export function Services() {
   return (
     <section id="services" className="py-32 border-t border-border">
       <Container>
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
-          <div className="lg:w-1/3">
-            <SectionNumber number="01" />
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl md:text-4xl font-semibold tracking-tight mt-4"
-            >
-              Services
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-4 text-muted-light font-light leading-relaxed"
-            >
-              End-to-end digital solutions tailored to your business goals.
-            </motion.p>
-          </div>
+        {/* Heading */}
+        <div className="text-center max-w-3xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-playfair font-normal italic leading-tight text-foreground"
+          >
+            You Get Referrals But Your Website Is Turning Them Away.
+          </motion.h2>
 
-          <div className="lg:w-2/3">
-            <div className="grid gap-0">
-              {services.map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group py-10 border-b border-border first:border-t"
-                >
-                  <div className="flex items-start justify-between gap-8">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-4">
-                        <span className="text-xs text-muted font-mono">
-                          0{index + 1}
-                        </span>
-                        <h3 className="text-xl md:text-2xl font-medium group-hover:text-accent transition-colors duration-300">
-                          {service.title}
-                        </h3>
-                      </div>
-                      <p className="mt-4 text-muted-light font-light max-w-md pl-10">
-                        {service.description}
-                      </p>
-                    </div>
-                    <motion.div
-                      className="text-muted group-hover:text-accent transition-colors duration-300"
-                      whileHover={{ x: 5 }}
-                    >
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      >
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mt-6 text-muted-light font-light leading-relaxed text-base md:text-lg max-w-2xl mx-auto"
+          >
+            Your craftsmanship is top-notch. Clients love your work. But when
+            someone Googles you or gets sent your link, they see a site that
+            doesn&apos;t match your reputation. They click away and call the next guy.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-8 text-lg md:text-xl font-semibold text-foreground"
+          >
+            Yet something still isn&apos;t working.
+          </motion.p>
         </div>
+
+        {/* Pain point cards with arrows */}
+        <div className="mt-20 flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-0">
+          {painPoints.map((point, index) => (
+            <div key={point.title} className="flex items-center md:items-start gap-0">
+              {/* Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.2 + index * 0.15,
+                  ease: [0.23, 1, 0.32, 1],
+                }}
+                className="flex flex-col items-center text-center max-w-[240px]"
+              >
+                {/* Icon circle */}
+                <div className="w-20 h-20 rounded-full border-2 border-white/15 flex items-center justify-center mb-5 bg-card">
+                  <point.icon className="w-8 h-8 text-foreground" strokeWidth={1.5} />
+                </div>
+
+                <h3 className="text-base font-semibold text-foreground tracking-tight">
+                  {point.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted-light font-light leading-relaxed">
+                  {point.description}
+                </p>
+              </motion.div>
+
+              {/* Arrow between cards */}
+              {index < painPoints.length - 1 && <Arrow />}
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom callout */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-20 text-center text-base md:text-lg font-medium text-foreground max-w-2xl mx-auto"
+        >
+          The problem isn&apos;t your skills. The problem is your website doesn&apos;t
+          sell them.
+        </motion.p>
+
+        {/* Down arrows */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="mt-12 flex flex-col items-center gap-1"
+        >
+          <ChevronDown className="w-8 h-8 text-accent/60" strokeWidth={2} />
+          <ChevronDown className="w-8 h-8 text-accent -mt-4" strokeWidth={2} />
+        </motion.div>
       </Container>
     </section>
   );

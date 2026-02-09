@@ -45,7 +45,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-32 border-t border-border bg-gradient-to-b from-white to-blue-50/50">
+    <section id="contact" className="py-32 border-t border-border bg-gradient-to-b from-background to-background-secondary">
       <Container>
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
           <div className="lg:w-1/3">
@@ -95,7 +95,7 @@ export function Contact() {
                   href="tel:+1234567890"
                   className="mt-2 block text-lg text-foreground hover:text-accent transition-colors"
                 >
-                  +1 (234) 567-890
+                  +1 (234) 567-8903
                 </a>
               </div>
               <div>
@@ -179,19 +179,19 @@ export function Contact() {
                   name="budget"
                   className="w-full bg-transparent border-b border-border py-3 text-foreground focus:border-accent focus:outline-none transition-colors cursor-pointer"
                 >
-                  <option value="" className="bg-background">
+                  <option value="" className="bg-card text-foreground">
                     Select a range
                   </option>
-                  <option value="5k-10k" className="bg-background">
-                    $5,000 - $10,000
+                  <option value="500k-10k" className="bg-card text-foreground">
+                    $500 - $1000
                   </option>
-                  <option value="10k-25k" className="bg-background">
+                  <option value="10k-25k" className="bg-card text-foreground">
                     $10,000 - $25,000
                   </option>
-                  <option value="25k-50k" className="bg-background">
+                  <option value="25k-50k" className="bg-card text-foreground">
                     $25,000 - $50,000
                   </option>
-                  <option value="50k+" className="bg-background">
+                  <option value="50k+" className="bg-card text-foreground">
                     $50,000+
                   </option>
                 </select>

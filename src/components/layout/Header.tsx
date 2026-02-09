@@ -22,14 +22,14 @@ export function Header() {
       className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 pt-4"
     >
       <nav
-        className={`max-w-6xl mx-auto bg-white/80 backdrop-blur-md ${isOpen ? "rounded-br-full pb-10" : "rounded-full"} border border-border/50 shadow-lg shadow-black/5 px-4 md:px-6 overflow-hidden`}
+        className={`max-w-6xl mx-auto bg-card/70 backdrop-blur-xl ${isOpen ? "rounded-br-full pb-10" : "rounded-full"} border border-white/[0.06] shadow-lg shadow-black/20 px-4 md:px-6 overflow-hidden`}
       >
         {/* Animated background shape */}
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-accent/5 rounded-full"
+          className="absolute inset-0 bg-gradient-to-r from-accent/[0.03] via-transparent to-accent/[0.03] rounded-full"
         />
 
         <div className="relative flex items-center justify-between h-14 md:h-16">
@@ -145,7 +145,7 @@ export function Header() {
           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
           className="md:hidden overflow-hidden"
         >
-          <ul className="flex flex-col gap-4 py-6 border-t border-border/50">
+          <ul className="flex flex-col gap-4 py-6 border-t border-white/[0.06]">
             {navLinks.map((link, index) => (
               <motion.li
                 key={link.href}
@@ -163,7 +163,7 @@ export function Header() {
               </motion.li>
             ))}
             <motion.li
-              className="flex items-center gap-4 pt-4 border-t border-border/50"
+              className="flex items-center gap-4 pt-4 border-t border-white/[0.06]"
               initial={{ opacity: 0, x: -20 }}
               animate={isOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.3, delay: isOpen ? 0.4 : 0 }}

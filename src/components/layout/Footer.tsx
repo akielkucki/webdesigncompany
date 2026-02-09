@@ -76,7 +76,7 @@ export function Footer() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <p className="text-xs text-muted font-light">
+          <p className="text-xs text-muted font-light" suppressHydrationWarning>
             &copy; {new Date().getFullYear()} Northon Studios. All rights reserved.
           </p>
           <p className="text-xs text-muted font-light">
