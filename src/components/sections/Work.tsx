@@ -213,8 +213,8 @@ function ProjectCard({
           <Image
             src={imageSrc}
             alt={project.title}
-            width={480}
-            height={320}
+            width={216}
+            height={122}
             className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg shadow-2xl shadow-black/50 object-cover"
             style={{
               rotate: index % 2 === 0 ? "-3deg" : "3deg",

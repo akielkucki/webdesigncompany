@@ -93,8 +93,9 @@ export function Hero() {
           loop
           playsInline
           preload="auto"
-          poster="/bg.jpg"
-          src="/hero.mp4"
+          src="/hero.webm"
+          width={2160}
+          height={1440}
         />
 
         {/* Subtle noise texture */}
