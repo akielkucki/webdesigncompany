@@ -12,6 +12,7 @@ import { ArrowDown } from "lucide-react";
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -37,6 +38,14 @@ export function Hero() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [mounted, setMounted] = useState(false);
 
+  // Eagerly load + play the video on iOS
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.load();
+    video.play().catch(() => {});
+  }, []);
+
   useEffect(() => {
     setMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
@@ -60,15 +69,16 @@ export function Hero() {
         className="absolute inset-0"
       >
         <video
+          ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           poster="/bg.jpg"
-        >
-          <source src="/hero.mp4" type="video/mp4" />
-        </video>
+          src="/hero.mp4"
+        />
 
         {/* Subtle noise texture */}
         <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E')]" />
