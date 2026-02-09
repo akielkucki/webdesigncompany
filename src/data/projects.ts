@@ -9,6 +9,8 @@ export interface Project {
   challenge: string;
   solution: string;
   results: string[];
+  image?: string;
+  imageMobile?: string;
   testimonial?: {
     quote: string;
     author: string;
@@ -23,9 +25,11 @@ export const projects: Project[] = [
     title: "Blum Skin Care",
     category: "E-commerce & Branding",
     description: "An elegant skin care service and e-commerce platform designed for luxury and refinement.",
-    year: "2024",
+    year: "2026",
     client: "Blum Skin Care",
     services: ["Brand Strategy", "E-commerce Development", "UI/UX Design", "Product Photography Direction"],
+    image: "/portfolio/blumskincare.png",
+    imageMobile: "/portfolio/blumskincare_mobile.png",
     challenge:
       "Blum Skin Care needed a digital presence that matched the sophistication of their premium product line. Their existing site failed to convey the elegance and quality that defines their brand, resulting in lower conversions and brand perception issues.",
     solution:
@@ -49,9 +53,11 @@ export const projects: Project[] = [
     title: "Royal Vending Cart",
     category: "E-commerce & Web Application",
     description: "A comprehensive food truck parts e-commerce platform with custom cart builder tool.",
-    year: "2024",
+    year: "2026",
     client: "Royal Vending Cart",
     services: ["E-commerce Development", "Product Configurator", "UX Design", "Inventory Management Integration"],
+    image: "/portfolio/royalvendingcart.png",
+    imageMobile: "/portfolio/royalvendingcart_mobile.png",
     challenge:
       "Royal Vending Cart needed to transition from a local parts supplier to a national e-commerce presence. They required a platform that could sell individual parts while also offering a custom food truck builder for customers starting from scratch.",
     solution:
@@ -75,7 +81,7 @@ export const projects: Project[] = [
     title: "Red Bridge Construction",
     category: "Web Design & Branding",
     description: "A professional construction company website showcasing quality craftsmanship in Bucks County.",
-    year: "2024",
+    year: "2025",
     client: "Red Bridge Construction",
     services: ["Web Design", "Brand Refresh", "Photography Direction", "SEO Optimization"],
     challenge:

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { getProjectBySlug, getProjectBySlug as getProject } from "@/data/projects";
 import { Container } from "@/components/ui";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export default function ProjectPage() {
@@ -118,18 +119,42 @@ export default function ProjectPage() {
           </motion.div>
         </section>
 
-        {/* Project Image Placeholder */}
+        {/* Project Image */}
         <section>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="aspect-[16/9] bg-gradient-to-br from-blue-50 to-sky-100 flex items-center justify-center"
           >
-            <span className="text-[150px] md:text-[250px] lg:text-[350px] font-extralight text-accent/10 select-none">
-              {project.title.charAt(0)}
-            </span>
+            {project.image ? (
+              <div className="relative">
+                {/* Desktop image */}
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto hidden md:block"
+                  priority
+                />
+                {/* Mobile image (falls back to desktop if no mobile version) */}
+                <Image
+                  src={project.imageMobile || project.image}
+                  alt={project.title}
+                  width={750}
+                  height={1334}
+                  className="w-full h-auto md:hidden"
+                  priority
+                />
+              </div>
+            ) : (
+              <div className="aspect-[16/9] bg-gradient-to-br from-blue-50 to-sky-100 flex items-center justify-center">
+                <span className="text-[150px] md:text-[250px] lg:text-[350px] font-extralight text-accent/10 select-none">
+                  {project.title.charAt(0)}
+                </span>
+              </div>
+            )}
           </motion.div>
         </section>
 

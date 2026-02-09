@@ -79,3 +79,7 @@ body {
 .direction-reverse {
   animation-direction: reverse;
 }
+.text-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  color: transparent;
+}

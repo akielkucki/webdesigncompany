@@ -86,10 +86,10 @@ export function Contact() {
                   Email
                 </span>
                 <a
-                  href="mailto:hello@northonstudios.com"
+                  href="mailto:team@northonstudios.com"
                   className="mt-2 block text-lg text-foreground hover:text-accent transition-colors"
                 >
-                  hello@northonstudios.com
+                  team@northonstudios.com
                 </a>
               </div>
               <div>
@@ -97,17 +97,17 @@ export function Contact() {
                   Phone
                 </span>
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+12673800874"
                   className="mt-2 block text-lg text-foreground hover:text-accent transition-colors"
                 >
-                  +1 (234) 567-8903
+                  +1 (267) 380-0874
                 </a>
               </div>
               <div>
                 <span className="text-xs font-medium uppercase tracking-widest text-muted-light">
                   Location
                 </span>
-                <p className="mt-2 text-lg text-foreground">New York, NY</p>
+                <p className="mt-2 text-lg text-foreground">Philadelphia, PA</p>
               </div>
             </motion.div>
           </div>

@@ -5,11 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Container, SectionNumber } from "../ui";
 import { projects, type Project } from "@/data/projects";
 import Image from "next/image";
-
-const projectImages: Record<string, string> = {
-  "blum-skin-care": "/portfolio/blumskincare.png",
-  "royal-vending-cart": "/portfolio/royalvendingcart.png",
-};
+import Link from "next/link";
 
 const filters = ["All", "E-commerce", "Web Design", "Branding"];
 
@@ -148,7 +144,7 @@ function ProjectCard({
   project: Project;
   index: number;
 }) {
-  const imageSrc = projectImages[project.slug];
+  const imageSrc = project.image;
 
   return (
     <motion.li
@@ -164,48 +160,34 @@ function ProjectCard({
       }}
       className="relative group border-b border-white/10"
     >
-      <div className="grid grid-cols-1 md:grid-cols-[100px_1fr_1fr_1fr_48px] gap-2 md:gap-4 py-7 items-center">
+      <Link href={`/projects/${project.slug}`} className="grid grid-cols-1 md:grid-cols-[100px_1fr_1fr_1fr_48px] gap-2 md:gap-4 py-7 items-center cursor-pointer">
         {/* Year */}
-        <span className="text-sm md:text-base font-medium text-white/90">
+        <span className="text-xl md:text-base font-medium text-white/90">
           {project.year}
         </span>
 
         {/* Name + optional badge */}
         <div className="flex items-center gap-3">
-          <span className="text-base md:text-lg font-medium text-white group-hover:text-accent transition-colors duration-300">
+          <span className="text-base md:text-xl font-medium text-white group-hover:text-accent transition-colors duration-300">
             {project.title}
           </span>
         </div>
 
         {/* Category */}
-        <span className="text-sm text-white/50 font-light">
+        <span className="text-xl text-white/50 font-light">
           {project.category.includes("E-commerce")
             ? "E-commerce"
             : "Web Design"}
         </span>
 
         {/* Industry */}
-        <span className="text-sm text-white/50 font-light">
+        <span className="text-xl text-white/50 font-light">
           {getIndustry(project)}
         </span>
 
         {/* Arrow */}
-        <div className="hidden md:flex items-center justify-end">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-white/30 group-hover:text-accent group-hover:translate-x-1 transition-all duration-300"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </div>
-      </div>
+        <Image src={"/right-arrow.svg"} alt={"Right Arrow to project"} width={48} height={48} className={"md:block hidden"} />
+      </Link>
 
       {/* Hover image — centered over the row */}
       {imageSrc && (
@@ -213,8 +195,8 @@ function ProjectCard({
           <Image
             src={imageSrc}
             alt={project.title}
-            width={216}
-            height={122}
+            width={468}
+            height={468/1.2}
             className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg shadow-2xl shadow-black/50 object-cover"
             style={{
               rotate: index % 2 === 0 ? "-3deg" : "3deg",

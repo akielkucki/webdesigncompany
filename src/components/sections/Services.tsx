@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Container } from "../ui";
+import { Container, SectionNumber } from "../ui";
 import { Clock, Smartphone, EyeOff, ChevronDown } from "lucide-react";
 
 const painPoints = [
@@ -57,6 +57,11 @@ export function Services() {
   return (
     <section id="services" className="py-32 border-t border-border">
       <Container>
+        {/* Section number */}
+        <div className="flex justify-center">
+          <SectionNumber number="01" />
+        </div>
+
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto">
           <motion.h2
