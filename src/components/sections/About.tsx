@@ -18,10 +18,10 @@ export function About() {
           <div className="lg:w-1/3">
             <SectionNumber number="03" />
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4 }}
               className="text-3xl md:text-4xl font-semibold tracking-tight mt-4"
             >
               About Us
@@ -30,43 +30,43 @@ export function About() {
 
           <div className="lg:w-2/3">
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4, delay: 0.05 }}
               className="text-2xl md:text-3xl font-light leading-relaxed text-foreground/90"
             >
-              We&apos;re a team of designers, developers, and strategists who believe
-              in the power of thoughtful design and clean code.
+              We&apos;re a team of designers, developers, and strategists who
+              believe in the power of thoughtful design and clean code.
             </motion.p>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="mt-8 text-lg text-muted-light font-light leading-relaxed"
             >
-              Since 2012, we&apos;ve partnered with startups, agencies, and enterprise
-              companies to create digital experiences that matter. Our approach
-              combines strategic thinking with meticulous execution, ensuring
-              every project delivers measurable results.
+              Since 2012, we&apos;ve partnered with startups, agencies, and
+              enterprise companies to create digital experiences that matter. Our
+              approach combines strategic thinking with meticulous execution,
+              ensuring every project delivers measurable results.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
             >
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  transition={{ duration: 0.35, delay: index * 0.05 }}
                   className="text-center md:text-left"
                 >
                   <span className="text-4xl md:text-5xl font-semibold text-accent">
@@ -80,10 +80,10 @@ export function About() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="mt-16 pt-16 border-t border-border"
             >
               <h3 className="text-xs font-medium uppercase tracking-widest text-muted-light mb-8">

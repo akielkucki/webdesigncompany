@@ -31,7 +31,7 @@ function Arrow() {
       initial={{ opacity: 0, scale: 0.5 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.4 }}
+      transition={{ duration: 0.3, delay: 0.1 }}
       className="hidden md:flex items-center justify-center text-accent"
     >
       <svg
@@ -60,32 +60,33 @@ export function Services() {
         {/* Heading */}
         <div className="text-center max-w-3xl mx-auto">
           <motion.h2
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+            viewport={{ once: true, margin: "0px" }}
+            transition={{ duration: 0.5 }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-playfair font-normal italic leading-tight text-foreground"
           >
             You Get Referrals But Your Website Is Turning Them Away.
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            viewport={{ once: true, margin: "0px" }}
+            transition={{ duration: 0.4, delay: 0.05 }}
             className="mt-6 text-muted-light font-light leading-relaxed text-base md:text-lg max-w-2xl mx-auto"
           >
             Your craftsmanship is top-notch. Clients love your work. But when
             someone Googles you or gets sent your link, they see a site that
-            doesn&apos;t match your reputation. They click away and call the next guy.
+            doesn&apos;t match your reputation. They click away and call the next
+            guy.
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true, margin: "0px" }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             className="mt-8 text-lg md:text-xl font-semibold text-foreground"
           >
             Yet something still isn&apos;t working.
@@ -95,22 +96,27 @@ export function Services() {
         {/* Pain point cards with arrows */}
         <div className="mt-20 flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-0">
           {painPoints.map((point, index) => (
-            <div key={point.title} className="flex items-center md:items-start gap-0">
+            <div
+              key={point.title}
+              className="flex items-center md:items-start gap-0"
+            >
               {/* Card */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: "0px" }}
                 transition={{
-                  duration: 0.6,
-                  delay: 0.2 + index * 0.15,
-                  ease: [0.23, 1, 0.32, 1],
+                  duration: 0.4,
+                  delay: index * 0.06,
                 }}
                 className="flex flex-col items-center text-center max-w-[240px]"
               >
                 {/* Icon circle */}
                 <div className="w-20 h-20 rounded-full border-2 border-white/15 flex items-center justify-center mb-5 bg-card">
-                  <point.icon className="w-8 h-8 text-foreground" strokeWidth={1.5} />
+                  <point.icon
+                    className="w-8 h-8 text-foreground"
+                    strokeWidth={1.5}
+                  />
                 </div>
 
                 <h3 className="text-base font-semibold text-foreground tracking-tight">
@@ -129,14 +135,14 @@ export function Services() {
 
         {/* Bottom callout */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          viewport={{ once: true, margin: "0px" }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           className="mt-20 text-center text-base md:text-lg font-medium text-foreground max-w-2xl mx-auto"
         >
-          The problem isn&apos;t your skills. The problem is your website doesn&apos;t
-          sell them.
+          The problem isn&apos;t your skills. The problem is your website
+          doesn&apos;t sell them.
         </motion.p>
 
         {/* Down arrows */}
@@ -144,7 +150,7 @@ export function Services() {
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.7 }}
+          transition={{ duration: 0.4, delay: 0.15 }}
           className="mt-12 flex flex-col items-center gap-1"
         >
           <ChevronDown className="w-8 h-8 text-accent/60" strokeWidth={2} />

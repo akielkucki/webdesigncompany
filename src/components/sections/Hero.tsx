@@ -38,12 +38,29 @@ export function Hero() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [mounted, setMounted] = useState(false);
 
-  // Eagerly load + play the video on iOS
+  // Eagerly load + play the video, try Cache API first
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    video.load();
-    video.play().catch(() => {});
+
+    async function loadVideo() {
+      try {
+        if ("caches" in window) {
+          const cache = await caches.open("northon-video-v1");
+          const cached = await cache.match("/hero.mp4");
+          if (cached) {
+            const blob = await cached.blob();
+            video!.src = URL.createObjectURL(blob);
+          }
+        }
+      } catch {
+        // Fall back to normal src
+      }
+      video!.load();
+      video!.play().catch(() => {});
+    }
+
+    loadVideo();
   }, []);
 
   useEffect(() => {
@@ -113,7 +130,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           style={{ x: subtitleParallaxX, y: subtitleParallaxY }}
           className="mb-5"
         >
@@ -123,16 +140,14 @@ export function Hero() {
         </motion.div>
 
         {/* Title */}
-        <motion.div
-          style={{ x: textParallaxX, y: textParallaxY }}
-        >
+        <motion.div style={{ x: textParallaxX, y: textParallaxY }}>
           <div className="overflow-hidden">
             <motion.h1
-              initial={{ y: 120 }}
+              initial={{ y: 80 }}
               animate={{ y: 0 }}
               transition={{
-                duration: 1,
-                delay: 0.2,
+                duration: 0.7,
+                delay: 0.1,
                 ease: [0.23, 1, 0.32, 1],
               }}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.95]"
@@ -143,11 +158,11 @@ export function Hero() {
 
           <div className="overflow-hidden">
             <motion.h1
-              initial={{ y: 120 }}
+              initial={{ y: 80 }}
               animate={{ y: 0 }}
               transition={{
-                duration: 1,
-                delay: 0.35,
+                duration: 0.7,
+                delay: 0.2,
                 ease: [0.23, 1, 0.32, 1],
               }}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95]"
@@ -160,11 +175,11 @@ export function Hero() {
 
           <div className="overflow-hidden">
             <motion.h1
-              initial={{ y: 120 }}
+              initial={{ y: 80 }}
               animate={{ y: 0 }}
               transition={{
-                duration: 1,
-                delay: 0.5,
+                duration: 0.7,
+                delay: 0.3,
                 ease: [0.23, 1, 0.32, 1],
               }}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.95]"
@@ -176,9 +191,9 @@ export function Hero() {
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           style={{ x: subtitleParallaxX, y: subtitleParallaxY }}
           className="mt-6 md:mt-8 text-base md:text-lg text-white/60 max-w-md font-light leading-relaxed"
         >
@@ -188,14 +203,17 @@ export function Hero() {
 
         {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-8 flex flex-col sm:flex-row items-start gap-4"
         >
           <motion.a
             href="#contact"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(59,130,246,0.4)" }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 40px rgba(59,130,246,0.4)",
+            }}
             whileTap={{ scale: 0.97 }}
             className="group relative inline-flex items-center justify-center h-14 px-10 bg-white text-black font-semibold rounded-full overflow-hidden transition-all duration-300"
           >
@@ -208,7 +226,10 @@ export function Hero() {
 
           <motion.a
             href="#work"
-            whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.6)" }}
+            whileHover={{
+              scale: 1.05,
+              borderColor: "rgba(255,255,255,0.6)",
+            }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center h-14 px-10 text-white font-medium rounded-full border border-white/30 hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
           >
@@ -221,7 +242,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
         className="absolute bottom-8 right-8 md:right-14 z-20 flex flex-col items-center gap-2"
       >
         <span className="text-xs text-white/50 uppercase tracking-widest">
@@ -239,7 +260,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 1 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
         className="absolute right-8 md:right-14 top-1/2 -translate-y-1/2 z-20 hidden lg:block"
       >
         <div className="flex flex-col items-center gap-4">

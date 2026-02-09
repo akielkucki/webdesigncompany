@@ -15,10 +15,10 @@ export function Footer() {
     <footer className="border-t border-border py-16">
       <Container>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10"
         >
           <div>
@@ -73,11 +73,15 @@ export function Footer() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.05 }}
           className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <p className="text-xs text-muted font-light" suppressHydrationWarning>
-            &copy; {new Date().getFullYear()} Northon Studios. All rights reserved.
+          <p
+            className="text-xs text-muted font-light"
+            suppressHydrationWarning
+          >
+            &copy; {new Date().getFullYear()} Northon Studios. All rights
+            reserved.
           </p>
           <p className="text-xs text-muted font-light">
             Designed & Built with precision.

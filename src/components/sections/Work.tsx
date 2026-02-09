@@ -41,10 +41,10 @@ export function Work() {
           <div>
             <SectionNumber number="02" />
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4 }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mt-2 uppercase leading-[1.05]"
             >
               Selected
@@ -59,7 +59,7 @@ export function Work() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             className="relative flex-shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-full flex items-center justify-center cursor-pointer group"
@@ -78,10 +78,10 @@ export function Work() {
 
         {/* Filter pills */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true, margin: "0px" }}
+          transition={{ duration: 0.4, delay: 0.05 }}
           className="mt-12 flex flex-wrap gap-2"
         >
           {filters.map((f) => (
@@ -153,13 +153,13 @@ function ProjectCard({
   return (
     <motion.li
       layout
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      viewport={{ once: true, margin: "-30px" }}
+      exit={{ opacity: 0, y: -15 }}
+      viewport={{ once: true, margin: "0px" }}
       transition={{
-        duration: 0.5,
-        delay: index * 0.08,
+        duration: 0.35,
+        delay: index * 0.04,
         ease: [0.23, 1, 0.32, 1],
       }}
       className="relative group border-b border-white/10"
@@ -175,12 +175,13 @@ function ProjectCard({
           <span className="text-base md:text-lg font-medium text-white group-hover:text-accent transition-colors duration-300">
             {project.title}
           </span>
-
         </div>
 
         {/* Category */}
         <span className="text-sm text-white/50 font-light">
-          {project.category.includes("E-commerce") ? "E-commerce" : "Web Design"}
+          {project.category.includes("E-commerce")
+            ? "E-commerce"
+            : "Web Design"}
         </span>
 
         {/* Industry */}

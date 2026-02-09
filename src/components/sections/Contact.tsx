@@ -6,7 +6,9 @@ import { Button, Container, SectionNumber } from "../ui";
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -37,43 +39,46 @@ export function Contact() {
         setSubmitStatus("error");
       }
     } catch {
-      console.log("Possible network error")
-
+      console.log("Possible network error");
     } finally {
       setIsSubmitting(false);
     }
   }
 
   return (
-    <section id="contact" className="py-32 border-t border-border bg-gradient-to-b from-background to-background-secondary">
+    <section
+      id="contact"
+      className="py-32 border-t border-border bg-gradient-to-b from-background to-background-secondary"
+    >
       <Container>
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
           <div className="lg:w-1/3">
             <SectionNumber number="04" />
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4 }}
               className="text-3xl md:text-4xl font-semibold tracking-tight mt-4"
             >
               Let&apos;s Work Together
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4, delay: 0.05 }}
               className="mt-4 text-muted-light font-light leading-relaxed"
             >
-              Ready to elevate your digital presence? Tell us about your project.
+              Ready to elevate your digital presence? Tell us about your
+              project.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4, delay: 0.1 }}
               className="mt-12 space-y-6"
             >
               <div>
@@ -102,19 +107,17 @@ export function Contact() {
                 <span className="text-xs font-medium uppercase tracking-widest text-muted-light">
                   Location
                 </span>
-                <p className="mt-2 text-lg text-foreground">
-                  New York, NY
-                </p>
+                <p className="mt-2 text-lg text-foreground">New York, NY</p>
               </div>
             </motion.div>
           </div>
 
           <div className="lg:w-2/3">
             <motion.form
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true, margin: "0px" }}
+              transition={{ duration: 0.4, delay: 0.05 }}
               className="space-y-8"
               onSubmit={handleSubmit}
             >
