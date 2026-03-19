@@ -48,12 +48,15 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-32 border-t border-border bg-gradient-to-b from-background to-background-secondary"
+      className="py-32 border-t border-border bg-gradient-to-b from-background to-background-secondary relative overflow-hidden"
     >
+      {/* Honeycomb decor */}
+      <div className="absolute inset-0 honeycomb-pattern opacity-15 pointer-events-none" />
+      <div className="absolute top-20 right-0 w-72 h-72 rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
       <Container>
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
           <div className="lg:w-1/3">
-            <SectionNumber number="04" />
+            <SectionNumber number="05" />
             <motion.h2
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}

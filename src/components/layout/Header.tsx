@@ -6,6 +6,7 @@ import { Hexagon } from "lucide-react";
 
 const navLinks = [
   { href: "#services", label: "Services" },
+  { href: "#pricing", label: "Pricing" },
   { href: "#work", label: "Work" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
@@ -180,7 +181,7 @@ export function Header() {
             className="fixed inset-0 z-[55] md:hidden"
           >
             {/* Background */}
-            <div className="absolute inset-0 bg-[#06060a]" />
+            <div className="absolute inset-0 bg-[#0a0804]" />
 
             {/* Abstract shapes */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -203,7 +204,7 @@ export function Header() {
                   delay: 0.15,
                   ease: [0.23, 1, 0.32, 1],
                 }}
-                className="absolute bottom-32 -left-16 w-48 h-48 rounded-full bg-blue-500/15 blur-[80px]"
+                className="absolute bottom-32 -left-16 w-48 h-48 rounded-full bg-amber-600/15 blur-[80px]"
               />
 
               {/* Diagonal line */}
@@ -261,8 +262,8 @@ export function Header() {
                 <div className="w-px h-6 bg-white/[0.08] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
               </motion.div>
 
-              {/* Subtle grid pattern overlay */}
-              <div className="absolute inset-0 opacity-[0.02] bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:60px_60px]" />
+              {/* Honeycomb pattern overlay */}
+              <div className="absolute inset-0 honeycomb-pattern opacity-30" />
             </div>
 
             {/* Nav content */}

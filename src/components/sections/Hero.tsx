@@ -108,7 +108,7 @@ export function Hero() {
           className="pointer-events-none absolute z-[2] w-[600px] h-[600px] rounded-full opacity-20 blur-[120px]"
           style={{
             background:
-              "radial-gradient(circle, rgba(59,130,246,0.4) 0%, rgba(59,130,246,0) 70%)",
+              "radial-gradient(circle, rgba(212,148,10,0.4) 0%, rgba(212,148,10,0) 70%)",
           }}
           animate={{
             left: cursorPos.x - 300,
@@ -117,6 +117,9 @@ export function Hero() {
           transition={{ type: "spring", stiffness: 40, damping: 15 }}
         />
       )}
+
+      {/* Honeycomb pattern overlay */}
+      <div className="absolute inset-0 z-[2] honeycomb-pattern opacity-40 pointer-events-none" />
 
       {/* Bottom gradient — stronger to give text contrast */}
       <div className="absolute bottom-0 left-0 right-0 h-[60%] bg-gradient-to-t from-black/90 via-black/50 to-transparent z-[3]" />
@@ -168,7 +171,7 @@ export function Hero() {
               }}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95]"
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-cyan-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-300">
                 DIGITAL
               </span>
             </motion.h1>
@@ -213,13 +216,13 @@ export function Hero() {
             href="#contact"
             whileHover={{
               scale: 1.05,
-              boxShadow: "0 0 40px rgba(59,130,246,0.4)",
+              boxShadow: "0 0 40px rgba(212,148,10,0.4)",
             }}
             whileTap={{ scale: 0.97 }}
             className="group relative inline-flex items-center justify-center h-14 px-10 bg-white text-black font-semibold rounded-full overflow-hidden transition-all duration-300"
           >
             <span className="relative z-10">Start Your Project</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-accent to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-accent to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 group-hover:text-white transition-colors duration-300 ml-2">
               →
             </span>

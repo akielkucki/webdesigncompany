@@ -43,7 +43,7 @@ export function LoadingScreen() {
           key="loader"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#06060a]"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0804]"
         >
           {/* Subtle background glow */}
           <div className="absolute w-64 h-64 rounded-full bg-accent/15 blur-[100px]" />

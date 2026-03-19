@@ -1,5 +1,5 @@
 import { Header, Footer } from "@/components/layout";
-import { Hero, Services, Work, About, Contact } from "@/components/sections";
+import { Hero, Services, Pricing, Work, About, Contact } from "@/components/sections";
 import { LoadingScreen } from "@/components/ui";
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
+        <Pricing />
         <Work />
         <About />
         <Contact />

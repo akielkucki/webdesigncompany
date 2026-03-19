@@ -35,7 +35,7 @@ export function Work() {
         {/* Top area: section number + title + glowing CTA orb */}
         <div className="flex items-start justify-between gap-8">
           <div>
-            <SectionNumber number="02" />
+            <SectionNumber number="03" />
             <motion.h2
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -62,8 +62,8 @@ export function Work() {
           >
             {/* Glow layers */}
             <div className="absolute inset-0 rounded-full bg-accent/60 blur-2xl group-hover:blur-3xl transition-all duration-500" />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent via-blue-500 to-blue-400 opacity-80" />
-            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-blue-400/40 via-accent/60 to-blue-600/40 backdrop-blur-sm" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent via-amber-500 to-yellow-500 opacity-80" />
+            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-yellow-500/40 via-accent/60 to-amber-700/40 backdrop-blur-sm" />
             <span className="relative z-10 text-white font-bold text-sm md:text-base uppercase tracking-wider text-center leading-tight">
               Book
               <br />

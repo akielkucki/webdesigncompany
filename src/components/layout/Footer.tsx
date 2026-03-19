@@ -12,7 +12,9 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-16">
+    <footer className="border-t border-border py-16 relative overflow-hidden">
+      {/* Ambient honey glow */}
+      <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-accent/4 blur-[100px] pointer-events-none" />
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -36,7 +38,7 @@ export function Footer() {
                 Navigation
               </h4>
               <ul className="flex flex-col gap-2">
-                {["Services", "Work", "About", "Contact"].map((item) => (
+                {["Services", "Pricing", "Work", "About", "Contact"].map((item) => (
                   <li key={item}>
                     <a
                       href={`#${item.toLowerCase()}`}
