@@ -46,7 +46,7 @@ export function Hero() {
     async function loadVideo() {
       try {
         if ("caches" in window) {
-          const cache = await caches.open("northon-video-v1");
+          const cache = await caches.open("northon-video-v2");
           const cached = await cache.match("/hero.mp4");
           if (cached) {
             const blob = await cached.blob();
@@ -93,7 +93,7 @@ export function Hero() {
           loop
           playsInline
           preload="auto"
-          src="/hero.webm"
+          src="/hero.mp4"
           width={2160}
           height={1440}
         />
@@ -135,16 +135,32 @@ export function Hero() {
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          style={{ x: subtitleParallaxX, y: subtitleParallaxY }}
+          style={mounted ? { x: subtitleParallaxX, y: subtitleParallaxY } : undefined}
           className="mb-5"
         >
-          <span className="inline-block text-xs md:text-sm font-medium tracking-[0.3em] uppercase text-white/60 border border-white/20 px-4 py-2 rounded-full backdrop-blur-sm">
-            Web Design & Development
-          </span>
+          <motion.span
+              className="inline-block text-xs md:text-sm font-medium tracking-[0.3em] uppercase border border-white/20 px-4 py-2 rounded-full backdrop-blur-sm"
+              style={{
+                background: "linear-gradient(to right, #f3e0b2, #d4af6b, #b98a3f, #f3e0b2)", // Added a 4th color to loop smoothly
+                backgroundSize: "200% auto",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+              initial={{ backgroundPosition: "0% center" }}
+              animate={{ backgroundPosition: "260% center" }}
+              transition={{
+                delay: 0.5,
+                duration: 3, // Increased duration; 1s is very fast for a 200%-500% shift
+                ease: "linear", // Linear is usually better for "shimmer" effects
+
+              }}
+          >
+            A Private Digital Atelier
+          </motion.span>
         </motion.div>
 
         {/* Title */}
-        <motion.div style={{ x: textParallaxX, y: textParallaxY }}>
+        <motion.div style={mounted ? { x: textParallaxX, y: textParallaxY } : undefined}>
           <div className="overflow-hidden">
             <motion.h1
               initial={{ y: 80 }}
@@ -156,7 +172,7 @@ export function Hero() {
               }}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.95]"
             >
-              WE BUILD
+              BUILT
             </motion.h1>
           </div>
 
@@ -169,10 +185,10 @@ export function Hero() {
                 delay: 0.2,
                 ease: [0.23, 1, 0.32, 1],
               }}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.95]"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-playfair italic font-normal tracking-tight leading-[0.95]"
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-300">
-                DIGITAL
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f3e0b2] via-[#d4af6b] to-[#b98a3f]">
+                for the
               </span>
             </motion.h1>
           </div>
@@ -188,21 +204,23 @@ export function Hero() {
               }}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.95]"
             >
-              EXPERIENCES
+              DISCERNING
             </motion.h1>
           </div>
         </motion.div>
 
         {/* Subtitle */}
+
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          style={{ x: subtitleParallaxX, y: subtitleParallaxY }}
+          style={mounted ? { x: subtitleParallaxX } : undefined}
           className="mt-6 md:mt-8 text-base md:text-lg text-white/60 max-w-md font-light leading-relaxed"
         >
-          Strategic design meets technical excellence. We create websites
-          that captivate audiences and drive real business results.
+          A digital atelier for luxury houses, private brands, and heritage
+          companies. We architect bespoke experiences engineered to scale —
+          without compromising refinement.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -221,7 +239,7 @@ export function Hero() {
             whileTap={{ scale: 0.97 }}
             className="group relative inline-flex items-center justify-center h-14 px-10 bg-white text-black font-semibold rounded-full overflow-hidden transition-all duration-300"
           >
-            <span className="relative z-10">Start Your Project</span>
+            <span className="relative z-10">Begin a Commission</span>
             <div className="absolute inset-0 bg-gradient-to-r from-accent to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 group-hover:text-white transition-colors duration-300 ml-2">
               →
@@ -237,7 +255,7 @@ export function Hero() {
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center h-14 px-10 text-white font-medium rounded-full border border-white/30 hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
           >
-            View Our Work
+            View the Atelier
           </motion.a>
         </motion.div>
       </motion.div>

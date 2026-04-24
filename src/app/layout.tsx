@@ -18,15 +18,17 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Northon Studios | Web Design & Development Agency",
+  title: "Northon Studios | A Private Digital Atelier for Luxury Brands",
   description:
-    "We craft digital experiences that convert. Strategic design meets technical excellence for ambitious brands.",
+    "A private digital atelier composing bespoke websites and commerce experiences for luxury houses, private brands, and heritage companies scaling with intention.",
   keywords: [
-    "web design",
-    "web development",
-    "digital agency",
-    "branding",
-    "marketing",
+    "luxury web design",
+    "luxury brand website",
+    "bespoke web design",
+    "digital atelier",
+    "high-end web development",
+    "luxury e-commerce",
+    "private client branding",
   ],
 };
 

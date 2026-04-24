@@ -64,7 +64,7 @@ export function Contact() {
               transition={{ duration: 0.4 }}
               className="text-3xl md:text-4xl font-semibold tracking-tight mt-4"
             >
-              Let&apos;s Work Together
+              Begin a quiet conversation.
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 15 }}
@@ -73,8 +73,8 @@ export function Contact() {
               transition={{ duration: 0.4, delay: 0.05 }}
               className="mt-4 text-muted-light font-light leading-relaxed"
             >
-              Ready to elevate your digital presence? Tell us about your
-              project.
+              Share the shape of the brand you&apos;re building. A principal
+              will respond personally, typically within one business day.
             </motion.p>
 
             <motion.div
@@ -188,17 +188,20 @@ export function Contact() {
                   <option value="" className="bg-card text-foreground">
                     Select a range
                   </option>
-                  <option value="500k-10k" className="bg-card text-foreground">
-                    $500 - $1000
-                  </option>
-                  <option value="10k-25k" className="bg-card text-foreground">
-                    $10,000 - $25,000
-                  </option>
                   <option value="25k-50k" className="bg-card text-foreground">
-                    $25,000 - $50,000
+                    $25,000 – $50,000
                   </option>
-                  <option value="50k+" className="bg-card text-foreground">
-                    $50,000+
+                  <option value="50k-100k" className="bg-card text-foreground">
+                    $50,000 – $100,000
+                  </option>
+                  <option value="100k-250k" className="bg-card text-foreground">
+                    $100,000 – $250,000
+                  </option>
+                  <option value="250k+" className="bg-card text-foreground">
+                    $250,000+
+                  </option>
+                  <option value="retainer" className="bg-card text-foreground">
+                    Ongoing retainer
                   </option>
                 </select>
               </div>
@@ -215,17 +218,17 @@ export function Contact() {
                   name="message"
                   rows={5}
                   className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted focus:border-accent focus:outline-none transition-colors resize-none"
-                  placeholder="Tell us about your project..."
+                  placeholder="A few lines on the brand, the moment, and what you&rsquo;re hoping to build..."
                 />
               </div>
 
               <div className="pt-4">
                 <Button className={"w-full"} disabled={isSubmitting}>
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? "Sending..." : "Submit Inquiry"}
                 </Button>
                 {submitStatus === "success" && (
                   <p className="mt-4 text-green-600 text-sm text-center">
-                    Message sent successfully! We&apos;ll be in touch soon.
+                    Thank you we will be in touch shortly.
                   </p>
                 )}
                 {submitStatus === "error" && (

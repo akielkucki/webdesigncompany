@@ -124,7 +124,7 @@ export function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Get Started
+                Begin a Commission
               </motion.a>
             </motion.div>
 
@@ -325,7 +325,7 @@ export function Header() {
                   onClick={() => setIsOpen(false)}
                   className="inline-flex px-8 py-4 text-sm font-medium bg-accent text-white rounded-full hover:bg-accent-hover transition-colors duration-300 uppercase tracking-wider"
                 >
-                  Start a Project
+                  Begin a Commission
                 </a>
                 <p className="mt-6 text-xs text-white/30 font-light">
                   hello@northonstudios.com

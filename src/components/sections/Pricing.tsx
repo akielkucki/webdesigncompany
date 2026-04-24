@@ -6,55 +6,56 @@ import { Container, SectionNumber } from "../ui";
 
 const tiers = [
   {
-    name: "Business Essential",
-    price: 97,
-    description: "Everything you need to get online and start converting.",
+    name: "Signature",
+    price: 1497,
+    description:
+      "An editorial digital presence for emerging luxury brands ready to look the part.",
     badge: null,
     features: [
-      "Custom design & hand-written code",
-      "Up to 5 pages",
-      "Hosting & domain included",
-      "Mobile-first responsive design",
-      "PageSpeed optimized",
-      "Unlimited edits & updates",
-      "Direct developer support",
-      "Full redesign every 3 years",
+      "Bespoke art direction & hand-written code",
+      "Up to 5 composed pages",
+      "Managed hosting & custom domain",
+      "Editorial responsive design",
+      "Sub-second performance",
+      "Unlimited refinements",
+      "Direct line to senior talent",
+      "Full redesign every three years",
     ],
-    note: "6-month minimum",
+    note: "12-month partnership",
   },
   {
-    name: "Business+ Growth",
-    price: 197,
+    name: "Bespoke",
+    price: 2997,
     description:
-      "For businesses ready to capture leads and grow on autopilot.",
-    badge: "Most Popular",
+      "Our most-requested engagement — a digital flagship calibrated for growth.",
+    badge: "Most Requested",
     features: [
-      "Everything in Essential, plus:",
-      "Up to 10 pages",
-      "Service & landing pages",
-      "AI-powered automated follow-ups",
-      "1 free integration (blog, scheduling, chatbot, or estimators)",
-      "Enhanced local SEO",
+      "Everything in Signature, plus:",
+      "Up to 12 editorial pages",
+      "Collection, service & campaign pages",
+      "AI-powered concierge follow-up",
+      "One premium integration (editorial, reservations, CRM, etc.)",
+      "Global & private-client SEO",
     ],
-    note: "6-month minimum",
+    note: "12-month partnership",
   },
   {
-    name: "Ultimate Premium",
-    price: 397,
+    name: "Atelier",
+    price: 5997,
     description:
-      "Full-scale digital presence with advanced lead gen and SEO dominance.",
-    badge: "Best Value",
+      "An unlimited creative partnership for heritage houses and scaling maisons.",
+    badge: "By Invitation",
     features: [
-      "Everything in Growth, plus:",
-      "15+ pages (+$15/page over 15)",
-      "Service, location & landing pages",
-      "Advanced lead capture & CRM dashboard",
-      "AI follow-ups with smart segmentation",
-      "2 free integrations",
-      "Advanced SEO & Google Business optimization",
-      "Priority support",
+      "Everything in Bespoke, plus:",
+      "Unlimited composed pages",
+      "Regional, collection & campaign sites",
+      "Advanced CRM & private-client dashboard",
+      "Multi-locale & multi-brand architecture",
+      "Two premium integrations",
+      "Global SEO & reputation programs",
+      "Priority studio access",
     ],
-    note: "6-month minimum",
+    note: "12-month partnership",
   },
 ];
 
@@ -77,7 +78,7 @@ export function Pricing() {
             transition={{ duration: 0.5 }}
             className="text-3xl sm:text-4xl md:text-5xl font-playfair font-normal italic leading-tight text-foreground"
           >
-            Transparent Pricing. No Surprises.
+            Considered engagements. Transparent investment.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -86,8 +87,9 @@ export function Pricing() {
             transition={{ duration: 0.4, delay: 0.05 }}
             className="mt-6 text-muted-light font-light leading-relaxed text-base md:text-lg"
           >
-            One monthly payment. No contracts trapping you in. No hidden fees.
-            Cancel anytime after your minimum term.
+            Design, development, hosting, and ongoing partnership in a single
+            monthly retainer. No surprise invoices, no agency layers — and the
+            work compounds year over year.
           </motion.p>
         </div>
 
@@ -100,7 +102,7 @@ export function Pricing() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative flex flex-col rounded-2xl border p-8 ${
-                tier.badge === "Most Popular"
+                tier.badge === "Most Requested"
                   ? "border-accent bg-accent/[0.04] shadow-lg shadow-accent/10"
                   : "border-border bg-card/50"
               }`}
@@ -146,12 +148,12 @@ export function Pricing() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className={`block w-full text-center py-3.5 rounded-full text-sm font-semibold transition-colors duration-300 ${
-                    tier.badge === "Most Popular"
+                    tier.badge === "Most Requested"
                       ? "bg-accent text-white hover:bg-accent-hover"
                       : "bg-foreground/10 text-foreground hover:bg-foreground/20 border border-border"
                   }`}
                 >
-                  Get Started
+                  Begin a Commission
                 </motion.a>
                 {tier.note && (
                   <p className="mt-3 text-center text-xs text-muted font-light">
@@ -170,14 +172,14 @@ export function Pricing() {
           transition={{ duration: 0.4, delay: 0.2 }}
           className="mt-12 text-center text-sm text-muted-light font-light"
         >
-          Not sure which plan is right? {" "}
+          Working at a different scale? {" "}
           <a
             href="#contact"
             className="text-accent hover:text-accent-hover underline underline-offset-4 transition-colors"
           >
-            Schedule a free call
+            Request a private consultation
           </a>{" "}
-          and we&apos;ll help you decide.
+          and we&apos;ll compose an engagement around your brand.
         </motion.p>
       </Container>
     </section>

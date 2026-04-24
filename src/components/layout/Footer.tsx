@@ -28,7 +28,8 @@ export function Footer() {
               NORTHON STUDIOS<span className="text-accent">.</span>
             </a>
             <p className="mt-4 text-sm text-muted-light max-w-xs font-light">
-              Crafting digital experiences that elevate brands and drive results.
+              A private digital atelier composing flagship experiences for
+              luxury brands and houses.
             </p>
           </div>
 
@@ -86,7 +87,7 @@ export function Footer() {
             reserved.
           </p>
           <p className="text-xs text-muted font-light">
-            Designed & Built with precision.
+            Composed with intention in Philadelphia.
           </p>
         </motion.div>
       </Container>

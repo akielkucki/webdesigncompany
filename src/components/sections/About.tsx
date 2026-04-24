@@ -6,24 +6,24 @@ import { Container, SectionNumber } from "../ui";
 
 const features = [
   {
-    title: "Custom Code, Not Templates",
+    title: "A Studio, Not an Agency",
     description:
-      "Every line is written by hand. No cookie-cutter themes. Your site is yours — fast, unique, and built to convert.",
+      "A small team of senior designers and engineers — the people who pitched the work are the people who build it. Every commission carries our signature.",
   },
   {
-    title: "Built for Performance",
+    title: "Bespoke From First Line",
     description:
-      "We use the same tech stack as modern tech companies (React & Next.js). No WordPress bloat. Just speed.",
+      "No templates, no off-the-shelf themes, no retrofitted WordPress. Your flagship is written on the same stack trusted by modern luxury houses.",
   },
   {
-    title: "Direct Developer Access",
+    title: "Discreet & Direct",
     description:
-      "No account managers or ticketing systems. You talk directly to the people building your site.",
+      "You work directly with the principals. No account managers, no ticket queues, no calls about calls — just considered craft and fast, intelligent response.",
   },
   {
-    title: "One Monthly Payment",
+    title: "Built to Scale",
     description:
-      "No massive upfront costs. Hosting, updates, and support all included in a simple monthly plan.",
+      "Multi-locale, multi-brand, multi-market. Architectures engineered so your digital presence grows with your house instead of needing to be rebuilt.",
   },
 ];
 
@@ -58,7 +58,7 @@ export function About() {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl xl:text-6xl font-playfair italic leading-[1.1] text-foreground"
             >
-              Why Northon Studios?
+              The house behind the houses.
             </motion.h2>
 
             <motion.p
@@ -68,9 +68,9 @@ export function About() {
               transition={{ delay: 0.2 }}
               className="mt-8 text-lg font-light text-muted-light max-w-sm leading-relaxed"
             >
-              We&apos;re not a giant agency. We&apos;re a focused team that
-              treats every project like our reputation depends on it — because
-              it does.
+              A small, senior studio composing digital experiences for luxury
+              brands and private companies who treat their reputation as the
+              product — because we do the same.
             </motion.p>
 
             <motion.div
@@ -86,7 +86,7 @@ export function About() {
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex px-8 py-3.5 text-sm font-semibold bg-accent text-white rounded-full hover:bg-accent-hover transition-colors duration-300"
               >
-                Schedule a Call
+                Request a Private Consultation
               </motion.a>
             </motion.div>
           </div>

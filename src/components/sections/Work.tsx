@@ -7,19 +7,27 @@ import { projects, type Project } from "@/data/projects";
 import Image from "next/image";
 import Link from "next/link";
 
-const filters = ["All", "E-commerce", "Web Design", "Branding"];
+const filters = ["All", "Hospitality", "E-commerce", "Real Estate", "Identity"];
 
 function matchesFilter(category: string, filter: string): boolean {
   if (filter === "All") return true;
   return category.toLowerCase().includes(filter.toLowerCase());
 }
 
+function getDisplayCategory(category: string): string {
+  if (category.includes("Hospitality")) return "Hospitality";
+  if (category.includes("E-commerce")) return "E-commerce";
+  if (category.includes("Real Estate")) return "Real Estate";
+  if (category.includes("Identity")) return "Identity";
+  return "Web Design";
+}
+
 function getIndustry(project: Project): string {
   const slug = project.slug;
-  if (slug.includes("blum")) return "Beauty & Skincare";
-  if (slug.includes("royal")) return "Food & Hospitality";
-  if (slug.includes("red-bridge")) return "Construction";
-  return "Digital";
+  if (slug.includes("azur")) return "Private Charter";
+  if (slug.includes("blum")) return "Luxury Beauty";
+  if (slug.includes("red-bridge")) return "Luxury Real Estate";
+  return "Private Clients";
 }
 
 export function Work() {
@@ -45,7 +53,7 @@ export function Work() {
             >
               Selected
               <br />
-              Work
+              <span className="font-playfair italic font-normal normal-case">Commissions</span>
             </motion.h2>
           </div>
 
@@ -65,9 +73,9 @@ export function Work() {
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent via-amber-500 to-yellow-500 opacity-80" />
             <div className="absolute inset-2 rounded-full bg-gradient-to-br from-yellow-500/40 via-accent/60 to-amber-700/40 backdrop-blur-sm" />
             <span className="relative z-10 text-white font-bold text-sm md:text-base uppercase tracking-wider text-center leading-tight">
-              Book
+              Request
               <br />
-              a Call
+              Consultation
             </span>
           </motion.a>
         </div>
@@ -175,9 +183,7 @@ function ProjectCard({
 
         {/* Category */}
         <span className="text-xl text-white/50 font-light">
-          {project.category.includes("E-commerce")
-            ? "E-commerce"
-            : "Web Design"}
+          {getDisplayCategory(project.category)}
         </span>
 
         {/* Industry */}

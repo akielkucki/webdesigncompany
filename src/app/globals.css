@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0d0a06;
-  --background-secondary: #13100a;
-  --foreground: #f5e8d0;
-  --accent: #d4940a;
-  --accent-hover: #e8aa20;
-  --accent-light: rgba(212, 148, 10, 0.08);
-  --muted: #5c4d36;
-  --muted-light: #9a8768;
-  --border: #261e12;
-  --card: #161108;
+  --background: #0a0806;
+  --background-secondary: #120f0a;
+  --foreground: #f3e8d2;
+  --accent: #c9a25a;
+  --accent-hover: #dcb874;
+  --accent-deep: #8f6d2f;
+  --accent-light: rgba(201, 162, 90, 0.08);
+  --muted: #5f503a;
+  --muted-light: #a8957a;
+  --border: #221c12;
+  --card: #14100a;
   --card-shadow: 0 4px 24px -1px rgb(0 0 0 / 0.5), 0 2px 8px -2px rgb(0 0 0 / 0.4);
 }
 
@@ -42,6 +43,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "liga", "kern";
 }
 
 ::selection {
@@ -49,9 +53,14 @@ body {
   color: var(--background);
 }
 
-/* Honeycomb decorative pattern */
+/* Honeycomb decorative pattern — softened for luxury feel */
 .honeycomb-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66ZM28 100L0 84L0 50L28 34L56 50L56 84L28 100Z' fill='none' stroke='rgba(212,148,10,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66ZM28 100L0 84L0 50L28 34L56 50L56 84L28 100Z' fill='none' stroke='rgba(201,162,90,0.05)' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+/* Film grain overlay — adds tactile quality */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Honey drip keyframes */
@@ -95,7 +104,43 @@ body {
 .direction-reverse {
   animation-direction: reverse;
 }
+
 .text-outline {
-  -webkit-text-stroke: 1px rgba(245, 232, 208, 0.2);
+  -webkit-text-stroke: 1px rgba(243, 232, 210, 0.2);
   color: transparent;
+}
+
+/* Gold-leaf gradient text helper */
+.text-gold {
+  background: linear-gradient(135deg, #f3e0b2 0%, #d4af6b 45%, #b98a3f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.text-gold-shimmer {
+  /* Separating these prevents background shorthand resets */
+  background-image: linear-gradient(135deg, #f3e0b2 0%, #d4af6b 45%, #b98a3f 100%);
+  background-size: 500% auto;
+  background-position: 290% 0;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  /* 1. Increased duration to 0.8s for a relaxed pace
+    2. Swapped 'linear' for a smooth custom cubic-bezier (ease-out)
+  */
+  transition: background-position 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:hover {
+    background-position: 390% 0;
+  }
+}
+
+/* Hairline divider with subtle gold wash */
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,162,90,0.35) 50%, transparent 100%);
 }
